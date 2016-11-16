@@ -22,7 +22,7 @@ class DelegatingWeatherProvider implements WeatherProviderInterface
             try {
                 return $provider->fetch($location);
             } catch (WeatherException $e) {
-                // Turbut turetu vykt klaidos loginimas
+                // TODO: Logint klaida
             }
 
             throw new WeatherException('No one knows temperature');
