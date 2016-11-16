@@ -2,6 +2,7 @@
 
 namespace NFQAkademija\WeatherBundle\Provider;
 
+use NFQAkademija\WeatherBundle\Service\Location;
 use NFQAkademija\WeatherBundle\Service\Weather;
 
 class YahooWeatherProvider implements WeatherProviderInterface
