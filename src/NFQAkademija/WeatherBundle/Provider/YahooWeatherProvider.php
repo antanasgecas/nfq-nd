@@ -16,7 +16,14 @@ class YahooWeatherProvider implements WeatherProviderInterface
      */
     public function fetch(Location $location): Weather
     {
-        $yql_query = 'select item.condition.temp from weather.forecast where woeid in (SELECT woeid FROM geo.places WHERE text="('.$location->getLatitude().','.$location->getLongitude().')") AND u="c"';
+        $latitude = $location->getLatitude();
+        $longitude = $location->getLongitude();
+
+        $yql_query = 'select item.condition.temp
+                      from weather.forecast
+                      where woeid in
+                      (SELECT woeid FROM geo.places WHERE text="('.$latitude.','.$longitude.')")
+                      AND u="c"';
         $yql_url = 'http://query.yahooapis.com/v1/public/yql?q=' . urlencode($yql_query) . '&format=json';
 
         // Guzzle Request
