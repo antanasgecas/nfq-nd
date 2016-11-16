@@ -1,15 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Weather{% endblock %}
+{% block title %}Oras{% endblock %}
 
 {% block body %}
-    <h2>{{ city | capitalize }}</h2>
+    <h2>Oras</h2>
 
     {% if success %}
-        Dabar: {{ temp }}&#8451;<br>
-        Žemiausia: {{ low }}&#8451;<br>
-        Aukščiausia: {{ high }}&#8451;
+        Temperatūra: {{ temp }}
     {% else %}
-        Nepavyko gauti temperatūros. Turbūt toks miestas neegzistuoja
+        Įvyko klaida
     {% endif %}
 {% endblock %}
