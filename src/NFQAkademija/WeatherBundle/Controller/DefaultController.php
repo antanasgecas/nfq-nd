@@ -4,6 +4,7 @@ namespace NFQAkademija\WeatherBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use GuzzleHttp\Client;
 
 class DefaultController extends Controller
 {
@@ -27,7 +28,7 @@ class DefaultController extends Controller
         $yql_url = 'http://query.yahooapis.com/v1/public/yql?q=' . urlencode($yql_query) . '&format=json';
 
         // Guzzle Request
-        $client   = new \GuzzleHttp\Client();
+        $client   = new Client();
         $response = $client->get($yql_url);
         $json = json_decode($response->getBody()->getContents(), true);
 
