@@ -10,11 +10,23 @@ class DelegatingWeatherProvider implements WeatherProviderInterface
 {
     private $providers;
 
+    /**
+     * DelegatingWeatherProvider constructor.
+     *
+     * @param array $providers
+     */
     public function __construct(array $providers)
     {
         $this->providers = $providers;
     }
 
+    /**
+     * @param Location $location
+     *
+     * @return Weather
+     *
+     * @throws WeatherException
+     */
     public function fetch(Location $location): Weather
     {
         foreach ($this->providers as $provider)
@@ -24,8 +36,8 @@ class DelegatingWeatherProvider implements WeatherProviderInterface
             } catch (WeatherException $e) {
                 // TODO: Logint klaida
             }
-
-            throw new WeatherException('No one knows temperature');
         }
+
+        throw new WeatherException('No one knows temperature');
     }
 }
