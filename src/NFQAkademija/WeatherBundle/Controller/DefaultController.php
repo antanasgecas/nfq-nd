@@ -6,7 +6,7 @@ use NFQAkademija\WeatherBundle\Provider\CachedWeatherProvider;
 use NFQAkademija\WeatherBundle\Provider\DelegatingWeatherProvider;
 use NFQAkademija\WeatherBundle\Provider\OpenWeatherMapWeatherProvider;
 use NFQAkademija\WeatherBundle\Provider\YahooWeatherProvider;
-use NFQAkademija\WeatherBundle\Service\Location;
+use NFQAkademija\WeatherBundle\Location;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 

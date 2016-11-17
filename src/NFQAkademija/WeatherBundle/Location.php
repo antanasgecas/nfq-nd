@@ -1,6 +1,6 @@
 <?php
 
-namespace NFQAkademija\WeatherBundle\Service;
+namespace NFQAkademija\WeatherBundle;
 
 class Location
 {

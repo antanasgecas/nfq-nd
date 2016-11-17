@@ -2,11 +2,11 @@
 
 namespace NFQAkademija\WeatherBundle\Provider;
 
-use NFQAkademija\WeatherBundle\Service\Weather;
-use NFQAkademija\WeatherBundle\Service\Location;
+use NFQAkademija\WeatherBundle\Weather;
+use NFQAkademija\WeatherBundle\Location;
+use NFQAkademija\WeatherBundle\WeatherException;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\RequestException;
-use NFQAkademija\WeatherBundle\Service\WeatherException;
 
 class OpenWeatherMapWeatherProvider implements WeatherProviderInterface
 {
