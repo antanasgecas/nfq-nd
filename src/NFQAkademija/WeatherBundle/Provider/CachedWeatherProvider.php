@@ -3,8 +3,8 @@
 namespace NFQAkademija\WeatherBundle\Provider;
 
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use NFQAkademija\WeatherBundle\Service\Location;
-use NFQAkademija\WeatherBundle\Service\Weather;
+use NFQAkademija\WeatherBundle\Location;
+use NFQAkademija\WeatherBundle\Weather;
 
 class CachedWeatherProvider implements WeatherProviderInterface
 {

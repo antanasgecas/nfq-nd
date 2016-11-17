@@ -2,8 +2,8 @@
 
 namespace NFQAkademija\WeatherBundle\Provider;
 
-use NFQAkademija\WeatherBundle\Service\Weather;
-use NFQAkademija\WeatherBundle\Service\Location;
+use NFQAkademija\WeatherBundle\Weather;
+use NFQAkademija\WeatherBundle\Location;
 
 interface WeatherProviderInterface
 {

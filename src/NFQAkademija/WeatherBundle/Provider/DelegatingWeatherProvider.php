@@ -2,9 +2,9 @@
 
 namespace NFQAkademija\WeatherBundle\Provider;
 
-use NFQAkademija\WeatherBundle\Service\WeatherException;
-use NFQAkademija\WeatherBundle\Service\Location;
-use NFQAkademija\WeatherBundle\Service\Weather;
+use NFQAkademija\WeatherBundle\WeatherException;
+use NFQAkademija\WeatherBundle\Location;
+use NFQAkademija\WeatherBundle\Weather;
 
 class DelegatingWeatherProvider implements WeatherProviderInterface
 {
