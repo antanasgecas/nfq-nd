@@ -30,16 +30,15 @@ class DefaultController extends Controller
      */
     public function weatherAction(float $longitude, float $latitude) {
         $location = new Location($longitude, $latitude);
-        $provider = new CachedWeatherProvider(
-            new DelegatingWeatherProvider([
-                new YahooWeatherProvider(),
-                new OpenWeatherMapWeatherProvider(),
-            ])
-        );
+//        $provider = new CachedWeatherProvider(
+//            new DelegatingWeatherProvider([
+//                new YahooWeatherProvider(),
+//                new OpenWeatherMapWeatherProvider(),
+//            ])
+//        );
 
-        $weather = $provider->fetch($location);
-
-        $temp = $weather->getTemperature();
+        $weather = $this->get('weather');
+        $temp    = $weather->fetch($location)->getTemperature();
 
         return $this->render('WeatherBundle:Default:weather.html.twig', [
             'temp'    => $temp,
