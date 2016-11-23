@@ -9,15 +9,18 @@ use NFQAkademija\WeatherBundle\Weather;
 class CachedWeatherProvider implements WeatherProviderInterface
 {
     private $provider;
+    private $ttl;
 
     /**
      * CachedWeatherProvider constructor.
      *
      * @param WeatherProviderInterface $provider
+     * @param int $ttl
      */
-    public function __construct(WeatherProviderInterface $provider)
+    public function __construct(WeatherProviderInterface $provider, int $ttl)
     {
         $this->provider = $provider;
+        $this->ttl      = $ttl;
     }
 
     /**
@@ -36,7 +39,7 @@ class CachedWeatherProvider implements WeatherProviderInterface
         {
             $temperature = $cache->getItem($key);
             $temperature->set($this->provider->fetch($location));
-            $temperature->expiresAfter(60 * 10);
+            $temperature->expiresAfter(60 * $this->ttl);
             $cache->save($temperature);
         }
 
