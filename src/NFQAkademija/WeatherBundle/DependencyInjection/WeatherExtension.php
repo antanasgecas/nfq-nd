@@ -35,24 +35,28 @@ class WeatherExtension extends Extension
             ->addArgument($config['providers']['openweathermap']['api_key']);
 
         // Delegating weather provider
-        $providers = [];
+        if (isset($config['providers']['delegating']['providers'])) {
+            $providers = [];
 
-        foreach($config['providers']['delegating']['providers'] as $provider) {
-            $providers[] = new Reference('weather.'.$provider);
+            foreach ($config['providers']['delegating']['providers'] as $provider) {
+                $providers[] = new Reference('weather.' . $provider);
+            }
+
+            $container
+                ->register('weather.delegating', DelegatingWeatherProvider::class)
+                ->addArgument($providers);
         }
 
-        $container
-            ->register('weather.delegating', DelegatingWeatherProvider::class)
-            ->addArgument($providers);
-
         // Cached weather provider
-        $provider = new Reference('weather.'.$config['providers']['cached']['provider']);
-        $ttl = $config['providers']['cached']['ttl'];
+        if (isset($config['providers']['cached'])) {
+            $provider = new Reference('weather.' . $config['providers']['cached']['provider']);
+            $ttl = $config['providers']['cached']['ttl'];
 
-        $container
-            ->register('weather.cached', CachedWeatherProvider::class)
-            ->addArgument($provider)
-            ->addArgument($ttl);
+            $container
+                ->register('weather.cached', CachedWeatherProvider::class)
+                ->addArgument($provider)
+                ->addArgument($ttl);
+        }
 
         // Set alias
         $container->setAlias('weather', 'weather.'.$config['provider']);
